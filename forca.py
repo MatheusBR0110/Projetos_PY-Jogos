@@ -5,7 +5,8 @@ def jogar_forca():
 
     lista = []
 
-    palavra_secreta = "processador"
+    palavra_secreta = "processador".upper()
+    letras_acertadas = ["_","_","_","_","_","_","_","_","_","_","_"]
     perdeu = False
     acertou = False
 
@@ -17,9 +18,12 @@ def jogar_forca():
         index = 0
 
         for letra in palavra_secreta:
-            if chute.lower() == letra.lower():
-                print(f"A letra {chute} está na posição {index}")
+            if(chute.upper() == letra.upper()):
+                letras_acertadas[index] = letra
+                print(letras_acertadas)
             index = index + 1
+        
+
 
 
 if(__name__ == "__main__"):
