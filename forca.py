@@ -15,9 +15,11 @@ def seleciona_palavra_rd():
 
     arquivo.close()
     posicao = rd.randrange(0,len(palavras))
-    palavra_secreta = palavras[posicao].lower()
-    return palavra_secreta
     
+    palavra_secreta = palavras[posicao].lower()
+
+    return palavra_secreta
+#0,5 de nota
 def letras_corretas(palavra_secreta):
     return ["_" for letra in palavra_secreta]
 
@@ -27,16 +29,17 @@ def entrada_dados():
     return chute
 
 def chute_correto(palavra_secreta, chute, letras_acertadas):
-     for letra in palavra_secreta:
-        if (chute == letra):
+    #index define a posição da letra
+    index = 0
+    for letra in palavra_secreta:
+        if chute == letra:
             letras_acertadas[index] = letra
-             index = index += 1
+        index += 1
+            
 def jogar_forca():
-    
     mensagem_inicial()
-
     palavra_secreta = seleciona_palavra_rd()
-    letras_acertadas = letras_acertadas(palavra_secreta)
+    letras_acertadas = letras_corretas(palavra_secreta)
 
     perdeu = False
     acertou = False
@@ -44,12 +47,10 @@ def jogar_forca():
 
     #Enquanto não acertar a palavra secreta
     while not perdeu and not acertou:
-        chute = entrada_dados
-        
-    #index define a posição da letra
-        index = 0
-        if(chute in palavra_secreta):
-           
+        chute = entrada_dados()
+
+        if chute in palavra_secreta:
+            chute_correto(palavra_secreta, chute, letras_acertadas)
         else:
             erros += 1
 
